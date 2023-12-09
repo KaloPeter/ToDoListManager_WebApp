@@ -1,15 +1,47 @@
+using System.Text;
+using API.Data;
+using API.Entities;
+using API.Interfaces.ITokenService;
+using API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true,//server checks token's signing key, and check if its valid
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
+builder.Services.AddScoped<ITokenService, TokenService>();
+
+//For database
+builder.Services.AddDbContext<TodoDataContext>(opt =>
+{
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+//For automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -21,5 +53,36 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<TodoDataContext>();
+    await context.Database.MigrateAsync();
+
+
+    if (!await context.Roles.AnyAsync())
+    {
+        var role_Guest = new Role() { RoleName = "Guest" };
+        var role_Analyst = new Role() { RoleName = "Analyst" };
+        var role_Admin = new Role() { RoleName = "Admin" };
+
+        context.Roles.Add(role_Guest);
+        context.Roles.Add(role_Analyst);
+        context.Roles.Add(role_Admin);
+        await context.SaveChangesAsync();
+    };
+
+
+}
+catch (Exception ex)
+{
+    var logger = services.GetService<ILogger<Program>>();
+    logger.LogError(ex, "An error occured during seeding data/migration");
+}
+
+
 
 app.Run();
