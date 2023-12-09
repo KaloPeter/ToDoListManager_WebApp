@@ -12,6 +12,7 @@ namespace API.Entities
 
         public Role()
         {
+            RoleId = Guid.NewGuid().ToString();
             Users = new HashSet<User>();
         }
 
