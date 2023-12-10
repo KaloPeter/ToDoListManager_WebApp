@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/" routerLinkActive="active">ToDo List Manager</a>
+
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
+        </button> -->
+
+        <!-- [collapse]="isCollapsed" [isAnimated]="true" -->
+        <div class="navbar-collapse collapse " id="navbarCollapse">
+            <ng-container>
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+                    </li>
+                    <!-- <li class="nav-item" *ngIf=" (accountService.currentUser$ | async)">
+                        <a class="nav-link" routerLink="/findrealestateowner" routerLinkActive="active">RealEstate
+                            Owner</a>
+                    </li> -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/todo" routerLinkActive="active">ToDo List Table</a>
+                    </li>
+
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" routerLink="/realestatemap" routerLinkActive="active">Open Map</a>
+                    </li> -->
+
+                </ul>
+            </ng-container>
+
+            <!-- <div class="btn-group pe-5" dropdown *ngIf=" (loggedUserObs | async) as user">
+
+                <button id="button-basic" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+                    <img src="{{user.userFaceImgUrl || './assets/user.jpg'}}" alt="mdo" width="32" height="32"
+                        class="rounded-circle">
+                    {{user.userName}}<span class="caret"></span>
+                </button>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start"
+                    role="menu" aria-labelledby="button-basic">
+
+               
+                    <li role="menuitem"><a class="dropdown-item" *ngFor="let urole of user.roles"
+                            (click)="routeToDetailsByRoleUserName(urole,user)" routerLink>
+                            {{urole}}
+                            Account</a></li>
+
+
+
+                    <li role="menuitem"><a class="dropdown-item" routerLink="/managerealestate">Manage RealEstate</a>
+                    </li>
+
+                    <li role="menuitem"><a class="dropdown-item" routerLink="/user/edit">Edit Profile</a>
+                    </li>
+
+                    <li class=" divider dropdown-divider"></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()">Log out</a>
+                    </li>
+                </ul>
+            </div> -->
+
+            <!-- <ul class="navbar-nav justify-content-end pe-3" *ngIf=" !(loggedUserObs | async)">
+                <li class="nav-item px-2">
+                  
+                    <button type="button" class="btn btn-primary" (click)="signIn()">
+                        Sign in
+                    </button>
+                </li>
+                <li class="nav-item px-2">
+                   
+                    <button type="button" class="btn btn-primary" (click)="signUp()">
+                        Sign up
+                    </button>
+                </li>
+            </ul> -->
+
+
+
+
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar collapse test -->
+<!-- <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h4 class="text-white">Collapsed content</h4>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div> -->
