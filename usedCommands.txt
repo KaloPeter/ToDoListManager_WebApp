@@ -1,0 +1,82 @@
+dotnet new sln
+dotnet new webapi -n API -f net6.0
+dotnet sln add API/
+
+dotnet ef migrations add MigrationName -o Data/Migrations
+dotnet ef migrations add MigrationName
+dotnet ef database update
+dotnet ef database drop
+
+dotnet watch --no-hot-reload
+dotnet run
+
+ng g c Components/ComponentName
+ng g c Components/ComponentName --skip-tests
+
+ng add ngx-bootstrap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
