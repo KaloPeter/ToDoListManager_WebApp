@@ -1,6 +1,100 @@
-<div class="row">
-    <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
-        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker>
-    </div>
+<div class="d-flex justify-content-center">
 
+    <div class="row">
+        <div class="eventForm">
+            <form #eventForm="ngForm" id="eventForm" class="was-validated" (ngSubmit)="processEventModel()"
+                autocomplete="off">
+
+                <div class="py-2">
+                    <input #eventName type="text" class="form-control" placeholder="Event Name" name="eventName"
+                        [(ngModel)]="toDoEventModel.eventName" required (input)="inputEventName(eventName.value)" />
+                    <div class="invalid-feedback">Give a name for the event</div>
+                </div>
+
+
+                <div class="py-2">
+                    <select #eventImportance class="form-select" required aria-label="select example"
+                        (change)="onChangeEventImportance(eventImportance.value)"
+                        [(ngModel)]="toDoEventModel.eventImportance" name="eventImportance">
+                        <option value="">Event Importance</option>
+                        <option value="Trivial">Trivial</option>
+                        <option value="Important">Important</option>
+                        <option value="Significant">Significant</option>
+                    </select>
+                    <div class="invalid-feedback">Choose importance level</div>
+                </div>
+
+
+
+                <div class="py-2">
+                    <textarea #eventDescription class="form-control" id="validationTextarea"
+                        placeholder="Description of event" required [(ngModel)]="toDoEventModel.eventDescription"
+                        name="eventDescription" (input)="inputEventDescription(eventDescription.value)"></textarea>
+                    <div class="invalid-feedback">
+                        Describe the event
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <hr>
+
+        <div class="pr-3 pb-3 pe-3 w-auto col-xs-6">
+
+
+
+            <bs-datepicker-inline #toDoEventDate [bsValue]="bsInlineValue"
+                (bsValueChange)="TEST($event)"></bs-datepicker-inline>
+
+        </div>
+
+
+        <!-- <div class="card col-xs-6" style="width: 18rem;">
+            <div class="card-body">
+
+                <h5 class="card-title" *ngIf="toDoEventModel.eventName != ''">{{toDoEventModel.eventName}}</h5>
+                <h5 class="card-title" *ngIf="toDoEventModel.eventName == ''">Title</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{toDoEventModel.eventDate}}</h6>
+                <p class="card-text" *ngIf="toDoEventModel.eventDescription != ''">{{toDoEventModel.eventDescription}}
+                </p>
+                <p class="card-text" *ngIf="toDoEventModel.eventDescription == ''">Description of To Do Event!</p>
+
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">Importance level</h5>
+                <p class="card-text" *ngIf="toDoEventModel.eventImportance != ''">{{toDoEventModel.eventImportance}}</p>
+                <p class="card-text" *ngIf="toDoEventModel.eventImportance == ''">Importance level HERE!</p>
+            </div>
+        </div> -->
+
+
+        <div class="card border-success mb-3 col-xs-6" style="width: 18rem;">
+
+            <div class="card-header bg-transparent border-success">{{toDoEventModel.eventDate}}</div>
+
+
+
+            <div class="card-body text-primary">
+                <h5 class="card-title" *ngIf="toDoEventModel.eventName != ''">{{toDoEventModel.eventName}}</h5>
+                <h5 class="card-title" *ngIf="toDoEventModel.eventName == ''">Title</h5>
+
+                <p class="card-text" *ngIf="toDoEventModel.eventDescription != ''">{{toDoEventModel.eventDescription}}
+                </p>
+                <p class="card-text" *ngIf="toDoEventModel.eventDescription == ''">Description of To Do Event!</p>
+            </div>
+
+            <p class="card-footer bg-transparent border-success" *ngIf="toDoEventModel.eventImportance != ''">
+                {{toDoEventModel.eventImportance}}</p>
+            <p class="card-footer bg-transparent border-success" *ngIf="toDoEventModel.eventImportance == ''">Importance
+                level HERE!</p>
+
+        </div>
+
+        <hr>
+        <div class="py-2">
+            <button type="submit" class="btn btn-success" form="eventForm">Save Event</button>
+        </div>
+    </div>
 </div>

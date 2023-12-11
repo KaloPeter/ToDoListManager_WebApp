@@ -10,6 +10,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { NavComponent } from './Components/nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToDoComponent } from './Components/to-do/to-do.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ToDoComponent } from './Components/to-do/to-do.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [],
