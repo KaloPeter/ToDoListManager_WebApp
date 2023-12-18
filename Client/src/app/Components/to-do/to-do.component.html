@@ -1,100 +1,319 @@
-<div class="d-flex justify-content-center">
+<!-- <div class="container text-center">
 
-    <div class="row">
-        <div class="eventForm">
-            <form #eventForm="ngForm" id="eventForm" class="was-validated" (ngSubmit)="processEventModel()"
-                autocomplete="off">
-
-                <div class="py-2">
-                    <input #eventName type="text" class="form-control" placeholder="Event Name" name="eventName"
-                        [(ngModel)]="toDoEventModel.eventName" required (input)="inputEventName(eventName.value)" />
-                    <div class="invalid-feedback">Give a name for the event</div>
-                </div>
-
-
-                <div class="py-2">
-                    <select #eventImportance class="form-select" required aria-label="select example"
-                        (change)="onChangeEventImportance(eventImportance.value)"
-                        [(ngModel)]="toDoEventModel.eventImportance" name="eventImportance">
-                        <option value="">Event Importance</option>
-                        <option value="Trivial">Trivial</option>
-                        <option value="Important">Important</option>
-                        <option value="Significant">Significant</option>
-                    </select>
-                    <div class="invalid-feedback">Choose importance level</div>
-                </div>
-
-
-
-                <div class="py-2">
-                    <textarea #eventDescription class="form-control" id="validationTextarea"
-                        placeholder="Description of event" required [(ngModel)]="toDoEventModel.eventDescription"
-                        name="eventDescription" (input)="inputEventDescription(eventDescription.value)"></textarea>
-                    <div class="invalid-feedback">
-                        Describe the event
-                    </div>
-                </div>
-
-            </form>
+    <div class="col">
+        <div class="row">
+            Input
         </div>
 
-        <hr>
-
-        <div class="pr-3 pb-3 pe-3 w-auto col-xs-6">
-
-
-
-            <bs-datepicker-inline #toDoEventDate [bsValue]="bsInlineValue"
-                (bsValueChange)="TEST($event)"></bs-datepicker-inline>
-
+        <div class="row">
+            Input
         </div>
 
-
-        <!-- <div class="card col-xs-6" style="width: 18rem;">
-            <div class="card-body">
-
-                <h5 class="card-title" *ngIf="toDoEventModel.eventName != ''">{{toDoEventModel.eventName}}</h5>
-                <h5 class="card-title" *ngIf="toDoEventModel.eventName == ''">Title</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">{{toDoEventModel.eventDate}}</h6>
-                <p class="card-text" *ngIf="toDoEventModel.eventDescription != ''">{{toDoEventModel.eventDescription}}
-                </p>
-                <p class="card-text" *ngIf="toDoEventModel.eventDescription == ''">Description of To Do Event!</p>
-
-            </div>
-
-            <div class="card-body">
-                <h5 class="card-title">Importance level</h5>
-                <p class="card-text" *ngIf="toDoEventModel.eventImportance != ''">{{toDoEventModel.eventImportance}}</p>
-                <p class="card-text" *ngIf="toDoEventModel.eventImportance == ''">Importance level HERE!</p>
-            </div>
-        </div> -->
-
-
-        <div class="card border-success mb-3 col-xs-6" style="width: 18rem;">
-
-            <div class="card-header bg-transparent border-success">{{toDoEventModel.eventDate}}</div>
-
-
-
-            <div class="card-body text-primary">
-                <h5 class="card-title" *ngIf="toDoEventModel.eventName != ''">{{toDoEventModel.eventName}}</h5>
-                <h5 class="card-title" *ngIf="toDoEventModel.eventName == ''">Title</h5>
-
-                <p class="card-text" *ngIf="toDoEventModel.eventDescription != ''">{{toDoEventModel.eventDescription}}
-                </p>
-                <p class="card-text" *ngIf="toDoEventModel.eventDescription == ''">Description of To Do Event!</p>
-            </div>
-
-            <p class="card-footer bg-transparent border-success" *ngIf="toDoEventModel.eventImportance != ''">
-                {{toDoEventModel.eventImportance}}</p>
-            <p class="card-footer bg-transparent border-success" *ngIf="toDoEventModel.eventImportance == ''">Importance
-                level HERE!</p>
-
-        </div>
-
-        <hr>
-        <div class="py-2">
-            <button type="submit" class="btn btn-success" form="eventForm">Save Event</button>
+        <div class="row">
+            Input
         </div>
     </div>
+
+    <div class="row">
+        <div class="col">
+            1 of 3
+        </div>
+        <div class="col">
+            2 of 3
+        </div>
+    </div>
+
+</div> 
+
+<hr>-->
+
+<div>
+    <tabset>
+        <tab heading="Simple Date Event Saver" id="tab1">
+
+            <div class="d-flex justify-content-center">
+
+                <div class="row">
+                    <div class="eventForm">
+                        <form #eventForm="ngForm" id="simpleEventForm" class="was-validated"
+                            (ngSubmit)="processSimpleEventForm()" autocomplete="off">
+
+                            <div class="py-2">
+                                <input #eventName type="text" class="form-control" placeholder="Event Name"
+                                    name="eventName" [(ngModel)]="toDoSingleDateEventModel.eventName" required
+                                    (input)="inputEventName(eventName.value)" />
+                                <div class="invalid-feedback">
+                                    <!-- Give a name for the event -->
+                                    <!-- <alert type="danger">
+                                        <strong>Give a name for the event</strong>
+                                    </alert> -->
+                                </div>
+                                <!-- <div class="valid-feedback">
+                                    <alert type="success">
+                                        <strong>Well done! You successfully read this important alert message.</strong>
+                                    </alert>
+                                </div> -->
+                            </div>
+
+                            <!-- HERE !!!!!! -->
+
+
+                            <!-- <div class="py-2 d-inline">
+                                <div>
+                                    <rating [max]="10" [(ngModel)]="toDoSingleDateEventModel.eventImportance"
+                                        [customTemplate]="tt" name="eventImportance"></rating>
+
+                                    <ng-template #tt let-i="index" let-v="value">
+                                        <input type="button" value="{{i < v ? '&#9733;': '&#9734;' }}"
+                                            class="btn btn-{{i < v ? 'success' : 'secondary'}}">
+                                    </ng-template>
+
+                                </div>
+
+                            </div> -->
+
+
+                            <div>
+                                <rating [max]="10" [(ngModel)]="toDoSingleDateEventModel.eventImportance"
+                                    [customTemplate]="tt" name="eventImportance"></rating>
+
+                                <ng-template #tt let-i="index" let-v="value">
+                                    <input type="button" value="{{i+1}}"
+                                        class="btn btn-{{i < v ? 'primary' : 'secondary'}}">
+                                </ng-template>
+
+                            </div>
+
+
+
+                            <div class=" py-2">
+                                <textarea #eventDescription class="form-control" id="validationTextarea"
+                                    placeholder="Description of event" required
+                                    [(ngModel)]="toDoSingleDateEventModel.eventDescription" name="eventDescription"
+                                    (input)="inputEventDescription(eventDescription.value)"></textarea>
+                                <div class="invalid-feedback">
+                                    <!-- Describe the event -->
+                                    <!-- <alert type="danger">
+                                        <strong>Describe the event</strong>
+                                    </alert> -->
+                                </div>
+                                <!-- <div class="valid-feedback">
+                                    <alert type="success">
+                                        <strong>Well done! You successfully read this important alert message.</strong>
+                                    </alert>
+                                </div> -->
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <hr>
+
+                    <div class="col col-lg-4">
+                        <div class="pr-3 pb-3 pe-3 w-auto">
+                            <bs-datepicker-inline #toDoEventDate [bsValue]="bsInlineValue"
+                                (bsValueChange)="singleDatePicker($event)"></bs-datepicker-inline>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card border-success mb-3 " style="width: 40rem; height:20rem">
+                            <div class="card-header bg-transparent border-success">
+                                <strong>{{toDoSingleDateEventModel.eventDate}}</strong>
+                            </div>
+                            <div class="card-body text-primary">
+                                <h5 class="card-title" *ngIf="toDoSingleDateEventModel.eventName != ''">
+                                    {{toDoSingleDateEventModel.eventName}}
+                                </h5>
+                                <h5 class="card-title" *ngIf="toDoSingleDateEventModel.eventName == ''">Title</h5>
+
+                                <p class="card-text" *ngIf="toDoSingleDateEventModel.eventDescription != ''">
+                                    {{toDoSingleDateEventModel.eventDescription}}
+                                </p>
+                                <p class="card-text" *ngIf="toDoSingleDateEventModel.eventDescription == ''">Description
+                                    of
+                                    To Do
+                                    Event!</p>
+                            </div>
+
+                            <div
+                                [ngClass]="{'bg-success':toDoSingleDateEventModel.eventImportance >= 1 && toDoSingleDateEventModel.eventImportance <=3,
+                                            'bg-warning':toDoSingleDateEventModel.eventImportance > 3 && toDoSingleDateEventModel.eventImportance <=6,
+                                            'bg-danger':toDoSingleDateEventModel.eventImportance > 6 && toDoSingleDateEventModel.eventImportance <=10}">
+                                <p class="card-footer border-success"
+                                    *ngIf="toDoSingleDateEventModel.eventImportance != ''">
+                                    <strong>Importance level: 10/{{toDoSingleDateEventModel.eventImportance}}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Default Card pattern -->
+                    <!-- <div class="card col-xs-6" style="width: 18rem;">
+                        <div class="card-body">
+            
+                            <h5 class="card-title" *ngIf="toDoEventModel.eventName != ''">{{toDoEventModel.eventName}}</h5>
+                            <h5 class="card-title" *ngIf="toDoEventModel.eventName == ''">Title</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">{{toDoEventModel.eventDate}}</h6>
+                            <p class="card-text" *ngIf="toDoEventModel.eventDescription != ''">{{toDoEventModel.eventDescription}}
+                            </p>
+                            <p class="card-text" *ngIf="toDoEventModel.eventDescription == ''">Description of To Do Event!</p>
+            
+                        </div>
+            
+                        <div class="card-body">
+                            <h5 class="card-title">Importance level</h5>
+                            <p class="card-text" *ngIf="toDoEventModel.eventImportance != ''">{{toDoEventModel.eventImportance}}</p>
+                            <p class="card-text" *ngIf="toDoEventModel.eventImportance == ''">Importance level HERE!</p>
+                        </div>
+                    </div> -->
+
+
+
+
+                    <hr>
+                    <div *ngFor="let alert of toDoSimpleEventAlerts">
+                        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="true"
+                            (onClosed)="onClosedSimpleEventAlert(alert)">
+                            <strong>{{
+                                alert.msg}}</strong>
+                        </alert>
+                    </div>
+                    <div class="py-2">
+                        <button type="submit" class="btn btn-success" form="simpleEventForm">Save Simple
+                            Event</button>
+                    </div>
+                </div>
+            </div>
+
+        </tab>
+        <!-- *********************************************************************************************************************************************************************** -->
+        <tab heading="Date Range Event Saver">
+
+            <div class="d-flex justify-content-center">
+                <div class="row">
+                    <div class="eventForm">
+                        <form #eventForm="ngForm" id="rangedEventForm" class="was-validated"
+                            (ngSubmit)="processRangedEventForm()" autocomplete="off">
+
+
+                            <div class="py-2">
+                                <input #eventName type="text" class="form-control" placeholder="Event Name"
+                                    name="eventName" [(ngModel)]="toDoRangedDateEventModel.eventName" required
+                                    (input)="inputEventName(eventName.value)" />
+                                <div class="invalid-feedback">
+                                    <!-- Give a name for the event -->
+                                    <!-- <alert type="danger">
+                                        <strong>Give a name for the event</strong>
+                                    </alert> -->
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <rating [max]="10" [(ngModel)]="toDoRangedDateEventModel.eventImportance"
+                                    [customTemplate]="tt" name="eventImportance"></rating>
+
+                                <ng-template #tt let-i="index" let-v="value">
+                                    <input type="button" value="{{i+1}}"
+                                        class="btn btn-{{i < v ? 'primary' : 'secondary'}}">
+                                </ng-template>
+
+                            </div>
+
+
+
+
+
+                            <div class="py-2">
+                                <textarea #eventDescription class="form-control" id="validationTextarea"
+                                    placeholder="Description of event" required
+                                    [(ngModel)]="toDoRangedDateEventModel.eventDescription" name="eventDescription"
+                                    (input)="inputEventDescription(eventDescription.value)"></textarea>
+                                <div class="invalid-feedback">
+                                    <!-- Describe the event -->
+                                    <!-- <alert type="danger">
+                                        <strong>Describe the event</strong>
+                                    </alert> -->
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <hr>
+
+
+
+                    <!-- 
+                        <bs-datepicker-inline #toDoEventDate [bsValue]="bsInlineValue"
+                            (bsValueChange)="TEST($event)"></bs-datepicker-inline> -->
+
+                    <div class="col col-lg-6">
+                        <div class="pr-3 pb-3 pe-3 w-auto">
+                            <bs-daterangepicker-inline [bsValue]="bsInlineRangeValue"
+                                (bsValueChange)="rangeDatePicker($event)"></bs-daterangepicker-inline>
+                        </div>
+
+                    </div>
+
+                    <div class="col">
+                        <div class="card border-success mb-3" style="width: 35rem; height: 20rem;">
+                            <div class="card-header bg-transparent border-success">
+                                <strong> {{toDoRangedDateEventModel.eventStartDate}} --
+                                    {{toDoRangedDateEventModel.eventEndDate}}</strong>
+                            </div>
+
+                            <div class="card-body text-primary">
+                                <h5 class="card-title" *ngIf="toDoRangedDateEventModel.eventName != ''">
+                                    {{toDoRangedDateEventModel.eventName}}
+                                </h5>
+                                <h5 class="card-title" *ngIf="toDoRangedDateEventModel.eventName == ''">Title</h5>
+
+                                <p class="card-text" *ngIf="toDoRangedDateEventModel.eventDescription != ''">
+                                    {{toDoRangedDateEventModel.eventDescription}}
+                                </p>
+                                <p class="card-text" *ngIf="toDoRangedDateEventModel.eventDescription == ''">Description
+                                    of
+                                    To Do
+                                    Event!</p>
+                            </div>
+
+                            <div
+                                [ngClass]="{'bg-success':toDoRangedDateEventModel.eventImportance >= 1 && toDoRangedDateEventModel.eventImportance <=3,
+                                        'bg-warning':toDoRangedDateEventModel.eventImportance > 3 && toDoRangedDateEventModel.eventImportance <=6,
+                                        'bg-danger':toDoRangedDateEventModel.eventImportance > 6 && toDoRangedDateEventModel.eventImportance <=10}">
+                                <p class="card-footer border-success"
+                                    *ngIf="toDoRangedDateEventModel.eventImportance != ''">
+                                    <strong>Importance level: 10/{{toDoRangedDateEventModel.eventImportance}}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <hr>
+                    <div *ngFor="let alert of toDoRangedEventAlerts">
+                        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="true"
+                            (onClosed)="onClosedSimpleEventAlert(alert)">
+                            <strong>{{
+                                alert.msg}}</strong>
+                        </alert>
+                    </div>
+
+                    <div class="py-2">
+                        <button type="submit" class="btn btn-success" form="rangedEventForm">Save Ranged
+                            Event</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </tab>
+
+    </tabset>
 </div>
