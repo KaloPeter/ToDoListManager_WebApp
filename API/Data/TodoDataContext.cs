@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +8,8 @@ namespace API.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<ToDoEvent> ToDoEvents { get; set; }
+        public DbSet<ToDoSingleEvent> ToDoSingleEvents { get; set; }
+        public DbSet<ToDoRangedEvent> ToDoRangedEvents { get; set; }
 
         public TodoDataContext(DbContextOptions options) : base(options)
         {
