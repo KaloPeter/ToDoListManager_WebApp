@@ -41,19 +41,6 @@ export class ToDoComponent implements OnInit {
     // this.toDoEventModel.eventEndDate = "";
 
   }
-
-  inputEventName(event: any) {
-    ;
-  }
-
-  onChangeEventImportance(event: any) {
-    ;
-  }
-
-  inputEventDescription(event: any) {
-    ;
-  }
-
   singleDatePicker(cd: Date) {
     let date = cd.toLocaleDateString();
     this.toDoSingleDateEventModel.eventDate = date;
@@ -72,8 +59,8 @@ export class ToDoComponent implements OnInit {
 
 
 
-  toDoSimpleEventAlerts: ExampleAlertType[] = [];
-  toDoRangedEventAlerts: ExampleAlertType[] = [];
+  toDoSimpleEventAlerts: AlertType[] = [];
+  toDoRangedEventAlerts: AlertType[] = [];
 
   processSimpleEventForm() {
     let evetnName = this.toDoSingleDateEventModel.eventName;
@@ -88,12 +75,14 @@ export class ToDoComponent implements OnInit {
   }
 
   processRangedEventForm() {
-    let evetnName = this.toDoRangedDateEventModel.eventName;
+    let eventName = this.toDoRangedDateEventModel.eventName;
     let eventImportance = this.toDoRangedDateEventModel.eventImportance;
     let eventDescription = this.toDoRangedDateEventModel.eventDescription;
 
 
-    if (evetnName && eventImportance && eventDescription) {
+
+
+    if (eventName && eventImportance && eventDescription) {
       this.addEventSuccessInput(this.toDoRangedEventAlerts)
     } else {
       this.addEventWrongInput(this.toDoRangedEventAlerts);
@@ -102,35 +91,34 @@ export class ToDoComponent implements OnInit {
 
   /********************************** */
 
-  addEventWrongInput(array: ExampleAlertType[]): void {
-    array.push({
-      type: 'danger',
-      msg: 'The form is invalid, because one or more inputs are not correct!',
-      timeout: 5000
-    });
+  addEventWrongInput(array: AlertType[]): void {
+    if (array.length < 2) {
+      array.push({
+        type: 'danger',
+        msg: 'The form is invalid, because one or more inputs are not correct!',
+        timeout: 5000
+      });
+    }
+
   }
 
-  addEventSuccessInput(array: ExampleAlertType[]): void {
-    array.push({
-      type: 'success',
-      msg: 'The event is being proceessed!',
-      timeout: 5000
-    });
+  addEventSuccessInput(array: AlertType[]): void {
+    if (array.length < 2) {
+      array.push({
+        type: 'success',
+        msg: 'The event is being proceessed!',
+        timeout: 5000
+      });
+    }
   }
 
-  onClosedSimpleEventAlert(dismissedAlert: ExampleAlertType): void {
+  onClosedSimpleEventAlert(dismissedAlert: AlertType): void {
     this.toDoSimpleEventAlerts = this.toDoSimpleEventAlerts.filter((alert) => alert !== dismissedAlert);
   }
 
-  onClosedRangedeEventAlert(dismissedAlert: ExampleAlertType): void {
+  onClosedRangedEventAlert(dismissedAlert: AlertType): void {
     this.toDoRangedEventAlerts = this.toDoRangedEventAlerts.filter((alert) => alert !== dismissedAlert);
   }
 
-
-
-
-
-
-
 }
-type ExampleAlertType = { type: string; msg: string; timeout: number };
+type AlertType = { type: string; msg: string; timeout: number };

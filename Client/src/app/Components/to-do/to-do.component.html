@@ -40,8 +40,7 @@
 
                             <div class="py-2">
                                 <input #eventName type="text" class="form-control" placeholder="Event Name"
-                                    name="eventName" [(ngModel)]="toDoSingleDateEventModel.eventName" required
-                                    (input)="inputEventName(eventName.value)" />
+                                    name="eventName" [(ngModel)]="toDoSingleDateEventModel.eventName" required />
                                 <div class="invalid-feedback">
                                     <!-- Give a name for the event -->
                                     <!-- <alert type="danger">
@@ -73,7 +72,7 @@
                             </div> -->
 
 
-                            <div>
+                            <!-- <div>
                                 <rating [max]="10" [(ngModel)]="toDoSingleDateEventModel.eventImportance"
                                     [customTemplate]="tt" name="eventImportance"></rating>
 
@@ -81,7 +80,17 @@
                                     <input type="button" value="{{i+1}}"
                                         class="btn btn-{{i < v ? 'primary' : 'secondary'}}">
                                 </ng-template>
+                            </div> -->
 
+                            <div>
+                                <p>Importance Level:</p>
+                                <rating [max]="10" [(ngModel)]="toDoSingleDateEventModel.eventImportance"
+                                    [customTemplate]="tt" name="eventImportance"></rating>
+                                <!-- class="btn btn-{{i < v ? 'primary' : 'secondary'}}" -->
+                                <ng-template #tt let-i="index" let-v="value">
+                                    <input type="button" value="{{i+1}}" class="btn"
+                                        [ngClass]="{'btn-success':i+1<=3,'btn-warning':i+1>3&& i+1<=6,'btn-danger': i+1>6 && i+1<=10 }">
+                                </ng-template>
                             </div>
 
 
@@ -89,8 +98,8 @@
                             <div class=" py-2">
                                 <textarea #eventDescription class="form-control" id="validationTextarea"
                                     placeholder="Description of event" required
-                                    [(ngModel)]="toDoSingleDateEventModel.eventDescription" name="eventDescription"
-                                    (input)="inputEventDescription(eventDescription.value)"></textarea>
+                                    [(ngModel)]="toDoSingleDateEventModel.eventDescription"
+                                    name="eventDescription"></textarea>
                                 <div class="invalid-feedback">
                                     <!-- Describe the event -->
                                     <!-- <alert type="danger">
@@ -174,16 +183,17 @@
 
 
                     <hr>
+
+                    <div class="py-2">
+                        <button type="submit" class="btn btn-success" form="simpleEventForm">Save Simple
+                            Event</button>
+                    </div>
                     <div *ngFor="let alert of toDoSimpleEventAlerts">
                         <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="true"
                             (onClosed)="onClosedSimpleEventAlert(alert)">
                             <strong>{{
                                 alert.msg}}</strong>
                         </alert>
-                    </div>
-                    <div class="py-2">
-                        <button type="submit" class="btn btn-success" form="simpleEventForm">Save Simple
-                            Event</button>
                     </div>
                 </div>
             </div>
@@ -201,8 +211,7 @@
 
                             <div class="py-2">
                                 <input #eventName type="text" class="form-control" placeholder="Event Name"
-                                    name="eventName" [(ngModel)]="toDoRangedDateEventModel.eventName" required
-                                    (input)="inputEventName(eventName.value)" />
+                                    name="eventName" [(ngModel)]="toDoRangedDateEventModel.eventName" required />
                                 <div class="invalid-feedback">
                                     <!-- Give a name for the event -->
                                     <!-- <alert type="danger">
@@ -211,16 +220,16 @@
                                 </div>
                             </div>
 
-
+                            <!-- class="btn btn-{{i < v ? 'primary' : 'secondary'}}" -->
                             <div>
+                                <p>Importance Level:</p>
                                 <rating [max]="10" [(ngModel)]="toDoRangedDateEventModel.eventImportance"
                                     [customTemplate]="tt" name="eventImportance"></rating>
 
                                 <ng-template #tt let-i="index" let-v="value">
                                     <input type="button" value="{{i+1}}"
-                                        class="btn btn-{{i < v ? 'primary' : 'secondary'}}">
+                                        [ngClass]="{'btn-success':i+1<=3,'btn-warning':i+1>3&& i+1<=6,'btn-danger': i+1>6 && i+1<=10 }">
                                 </ng-template>
-
                             </div>
 
 
@@ -230,8 +239,8 @@
                             <div class="py-2">
                                 <textarea #eventDescription class="form-control" id="validationTextarea"
                                     placeholder="Description of event" required
-                                    [(ngModel)]="toDoRangedDateEventModel.eventDescription" name="eventDescription"
-                                    (input)="inputEventDescription(eventDescription.value)"></textarea>
+                                    [(ngModel)]="toDoRangedDateEventModel.eventDescription"
+                                    name="eventDescription"></textarea>
                                 <div class="invalid-feedback">
                                     <!-- Describe the event -->
                                     <!-- <alert type="danger">
@@ -281,6 +290,7 @@
                                     Event!</p>
                             </div>
 
+                            <!-- DIRECTIVE MIGHT BE GOOD -->
                             <div
                                 [ngClass]="{'bg-success':toDoRangedDateEventModel.eventImportance >= 1 && toDoRangedDateEventModel.eventImportance <=3,
                                         'bg-warning':toDoRangedDateEventModel.eventImportance > 3 && toDoRangedDateEventModel.eventImportance <=6,
@@ -297,18 +307,21 @@
 
 
                     <hr>
-                    <div *ngFor="let alert of toDoRangedEventAlerts">
-                        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="true"
-                            (onClosed)="onClosedSimpleEventAlert(alert)">
-                            <strong>{{
-                                alert.msg}}</strong>
-                        </alert>
-                    </div>
+
 
                     <div class="py-2">
                         <button type="submit" class="btn btn-success" form="rangedEventForm">Save Ranged
                             Event</button>
                     </div>
+
+                    <div *ngFor="let alert of toDoRangedEventAlerts">
+                        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="true"
+                            (onClosed)="onClosedRangedEventAlert(alert)">
+                            <strong>{{
+                                alert.msg}}</strong>
+                        </alert>
+                    </div>
+
                 </div>
             </div>
 
