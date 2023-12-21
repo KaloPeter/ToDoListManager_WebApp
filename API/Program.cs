@@ -1,6 +1,9 @@
 using System.Text;
 using API.Data;
+using API.Data.Repositories;
 using API.Entities;
+using API.Helpers;
+using API.Interfaces.IRepositories;
 using API.Interfaces.ITokenService;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -14,6 +17,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers()
+           .AddJsonOptions(options =>
+           {
+               options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+           });
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -29,6 +38,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 });
 
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IToDoSingleEventRepository, ToDoSingleEventRepository>();
+builder.Services.AddScoped<ITodoRangedEventRepository, ToDoRangedEventRepository>();
+
+
 
 //For database
 builder.Services.AddDbContext<TodoDataContext>(opt =>
@@ -49,6 +63,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
