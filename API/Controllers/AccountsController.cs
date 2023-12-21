@@ -28,7 +28,7 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<UserResponseDto>> Register(UserRegisterRequestDto urrdto)
+        public async Task<ActionResult<UserTokenResponseDto>> Register(UserRegisterRequestDto urrdto)
         {
             if (urrdto == null)
             {
@@ -54,7 +54,7 @@ namespace API.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            var muser = _mapper.Map<UserResponseDto>(user);
+            var muser = _mapper.Map<UserTokenResponseDto>(user);
             muser.Token = _tokenService.CreateToken(user);
 
             return muser;
@@ -62,7 +62,7 @@ namespace API.Controllers
 
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserResponseDto>> Login(LoginRequestDto lrdto)
+        public async Task<ActionResult<UserTokenResponseDto>> Login(LoginRequestDto lrdto)
         {
             //To get rolename using automapper, i have to include here the role, to get accesss to its name.
             var user = await _context.Users.Where(u => u.UserName == lrdto.UserName).Include(u => u.Role).FirstOrDefaultAsync();
@@ -77,7 +77,7 @@ namespace API.Controllers
                 return BadRequest("Invalid password");
             }
 
-            var loggedUser = _mapper.Map<UserResponseDto>(user);
+            var loggedUser = _mapper.Map<UserTokenResponseDto>(user);
             loggedUser.Token = _tokenService.CreateToken(user);
 
             return loggedUser;
