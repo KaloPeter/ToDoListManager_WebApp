@@ -1,0 +1,48 @@
+<div *ngIf="inputToDoSingleEvent && !inputToDoRangedEvent">
+    <div class="col py-3">
+        <div class="card border-success mb-3">
+            <div class="card-header bg-transparent border-success">
+                <strong>{{inputToDoSingleEvent.singleEventDate}}</strong>
+                <p>{{inputToDoSingleEvent.user.firstName}}
+                    {{inputToDoSingleEvent.user.lastName}}</p>
+            </div>
+            <div class="card-body text-primary">
+                <h5 class="card-title">{{inputToDoSingleEvent.toDoSingleEventName}}</h5>
+
+                <p class="card-text">
+                    {{inputToDoSingleEvent.toDoSingleEventDescription}}
+                </p>
+            </div>
+
+            <p class="card-footer border-success">
+                <strong>Importance level: 10/{{inputToDoSingleEvent.singleEventImportance}}</strong>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!inputToDoSingleEvent && inputToDoRangedEvent">
+    <div class="col py-3">
+        <div class="card border-success mb-3">
+            <div class="card-header bg-transparent border-success">
+                <strong>{{inputToDoRangedEvent.rangedEventStartDate}} -
+                    {{inputToDoRangedEvent.rangedEventEndDate}}</strong>
+                <p> {{inputToDoRangedEvent.user.firstName}}
+                    {{inputToDoRangedEvent.user.lastName}}</p>
+            </div>
+            <div class="card-body text-primary">
+                <h5 class="card-title">{{inputToDoRangedEvent.toDoRangedEventName}}</h5>
+
+                <p class="card-text">
+                    {{inputToDoRangedEvent.toDoRangedEventDescription}}
+                </p>
+            </div>
+
+            <p class="card-footer border-success">
+                <strong>Importance level: 10/{{inputToDoRangedEvent.rangedEventImportance}}</strong>
+            </p>
+
+        </div>
+    </div>
+</div>

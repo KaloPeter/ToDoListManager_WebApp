@@ -53,16 +53,22 @@ builder.Services.AddDbContext<TodoDataContext>(opt =>
 //For automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+app.UseCors(pol => pol.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+
 
 app.UseAuthentication();
 

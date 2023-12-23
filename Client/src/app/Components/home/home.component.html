@@ -1,1 +1,18 @@
-<p>home works!</p>
+<!-- <ul>
+    <li *ngFor="let todos of toDoSingleEvents">{{todos.toDoSingleEventName}}--Single</li>
+</ul>
+
+<ul>
+    <li *ngFor="let todor of toDoRangedEvents">{{todor.toDoRangedEventName}}--Ranged</li>
+</ul> -->
+
+<div class="row row-cols-1 row-cols-md-4 border border-5 border-primary">
+    <app-to-do-event-card *ngFor="let todos of toDoSingleEvents" [inputToDoSingleEvent]="todos"></app-to-do-event-card>
+</div>
+
+<hr>
+
+<div class="row row-cols-1 row-cols-md-4 border border-5 border-success">
+    <app-to-do-event-card *ngFor="let todor of toDoRangedEvents" [inputToDoRangedEvent]="todor"></app-to-do-event-card>
+</div>
+<hr>
