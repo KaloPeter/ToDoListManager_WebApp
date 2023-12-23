@@ -1,29 +1,33 @@
-<form>
+<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
     <!-- <img class="mb-4" src="" alt="" width="72" height="57"> -->
     <h1 class="h3 mb-3 fw-normal">Sign-up</h1>
     <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="First Name">
-        <label for="floatingInput">First Name</label>
+        <input type="email" class="form-control" id="firstName" placeholder="First Name" name="firstName"
+            [(ngModel)]="registerModel.firstName">
+        <label for="firstName">First Name</label>
     </div>
 
     <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="Last Name">
-        <label for="floatingInput">Last Name</label>
+        <input type="email" class="form-control" id="lastName" placeholder="Last Name" name="lastName"
+            [(ngModel)]="registerModel.lastName">
+        <label for=" lastName">Last Name</label>
     </div>
 
     <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="Email Address">
-        <label for="floatingInput">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email"
+            [(ngModel)]="registerModel.email">
+        <label for="email">Email Address</label>
     </div>
 
-
     <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="UserName">
-        <label for="floatingInput">UserName</label>
+        <input type="email" class="form-control" id="UserName" placeholder=" UserName" name="UserName"
+            [(ngModel)]="registerModel.UserName">
+        <label for=" UserName">UserName</label>
     </div>
-    <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+    <div class=" form-floating">
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+            [(ngModel)]="registerModel.password">
+        <label for="password">Password</label>
     </div>
 
     <hr>
