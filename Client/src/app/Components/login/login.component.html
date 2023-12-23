@@ -1,14 +1,16 @@
-<form>
+<form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
     <!-- <img class="mb-4" src="" alt="" width="72" height="57"> -->
     <h1 class="h3 mb-3 fw-normal">Sign-in</h1>
 
     <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+        <input type="text" class="form-control" id="username" placeholder="username" name="username"
+            [(ngModel)]="loginModel.username">
+        <label for="username">UserName</label>
     </div>
     <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+            [(ngModel)]="loginModel.password">
+        <label for=" password">Password</label>
     </div>
 
     <hr>
