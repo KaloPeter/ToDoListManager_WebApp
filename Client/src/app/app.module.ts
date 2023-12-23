@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { ToDoEventMapComponent } from './Components/to-do-event-map/to-do-event-map.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     LoginComponent,
     RegisterComponent,
     NavComponent,
-    ToDoComponent
+    ToDoComponent,
+    ToDoEventMapComponent
   ],
   imports: [
     BrowserModule,
