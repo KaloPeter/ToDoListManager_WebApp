@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
 import { ToDoRangedEvent } from 'src/app/_Models/toDoRangedEvent';
 import { ToDoSingleEvent } from 'src/app/_Models/toDoSingleEvent';
 import { AccountService } from 'src/app/_Services/account.service';
@@ -18,8 +17,6 @@ export class HomeComponent implements OnInit {
   constructor(private homeService: HomeService, private accountSeervice: AccountService) { }
 
   ngOnInit(): void {
-
-
     this.getToDoSingleEvents();
     this.getToDoRangedEvents();
 
