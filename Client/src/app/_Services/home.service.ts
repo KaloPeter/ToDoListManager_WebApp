@@ -19,7 +19,7 @@ export class HomeService {
 
 
   getToDoSingleEvents() {
-    if (this.toDoSingleEvents.length > 0) return of(this.toDoSingleEvents);
+    //if (this.toDoSingleEvents.length > 0) return of(this.toDoSingleEvents);
     return this.http.get<ToDoSingleEvent[]>(this.baseUrl + "home/get-todosingleevents").pipe(
       map(todos => {
         this.toDoSingleEvents = todos;
@@ -30,7 +30,7 @@ export class HomeService {
 
 
   getToDoRangedEvents() {
-    if (this.toDoRangedEvents.length > 0) return of(this.toDoRangedEvents);
+    // if (this.toDoRangedEvents.length > 0) return of(this.toDoRangedEvents);
     return this.http.get<ToDoRangedEvent[]>(this.baseUrl + "home/get-todorangedevents").pipe(
       map(todor => {
         this.toDoRangedEvents = todor;
