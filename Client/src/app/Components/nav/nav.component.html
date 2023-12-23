@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" routerLink="/" routerLinkActive="active">ToDo List Manager</a>
 
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
@@ -19,31 +19,58 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="active">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
-                    </li>
-                    <!-- <li class="nav-item" *ngIf=" (accountService.currentUser$ | async)">
-                        <a class="nav-link" routerLink="/findrealestateowner" routerLinkActive="active">RealEstate
-                            Owner</a>
-                    </li> -->
 
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/todo" routerLinkActive="active">ToDo List Table</a>
+                    <li class="nav-item" *ngIf="(loggedUserObs | async) as user">
+                        <a class="nav-link" routerLink="/todo" routerLinkActive="active">Add ToDo Event</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/todomap" routerLinkActive="active">ToDo Map</a>
                     </li>
-
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" routerLink="/realestatemap" routerLinkActive="active">Open Map</a>
-                    </li> -->
-
                 </ul>
+
+                <div class="btn-group pe-5" dropdown *ngIf=" (loggedUserObs | async) as user">
+
+                    <button id="button-basic" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle"
+                        aria-controls="dropdown-basic">
+                        <img src="https://randomuser.me/api/portraits/lego/1.jpg" alt="mdo" width="32" height="32"
+                            class="rounded-circle">
+                        {{user.userName}}<span class="caret"></span>
+                    </button>
+                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start"
+                        role="menu" aria-labelledby="button-basic">
+
+
+
+
+                        <li role="menuitem"><a class="dropdown-item">Profil adatok</a>
+                        </li>
+
+                        <li role="menuitem"><a class="dropdown-item">Profil Törlése</a>
+                        </li>
+
+                        <li class=" divider dropdown-divider"></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()">Kilépés</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div *ngIf="!(loggedUserObs | async) as user">
+                    <div class="text-end mr-4">
+                        <button type="button" class="btn btn-outline-primary me-2" (click)="signIn()">
+                            Sign-In
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="signUp()">
+                            Sign-Up
+                        </button>
+                    </div>
+                </div>
+
+
+
+
             </ng-container>
 
             <!-- <div class="btn-group pe-5" dropdown *ngIf=" (loggedUserObs | async) as user">
