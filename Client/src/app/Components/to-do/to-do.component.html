@@ -40,7 +40,8 @@
 
                             <div class="py-2">
                                 <input #eventName type="text" class="form-control" placeholder="Event Name"
-                                    name="eventName" [(ngModel)]="toDoSingleDateEventModel.eventName" required />
+                                    name="toDoSingleEventName"
+                                    [(ngModel)]="toDoSingleDateEventModel.toDoSingleEventName" required />
                                 <div class="invalid-feedback">
                                     <!-- Give a name for the event -->
                                     <!-- <alert type="danger">
@@ -84,8 +85,8 @@
 
                             <div>
                                 <p>Importance Level:</p>
-                                <rating [max]="10" [(ngModel)]="toDoSingleDateEventModel.eventImportance"
-                                    [customTemplate]="tt" name="eventImportance"></rating>
+                                <rating [max]="10" [(ngModel)]="toDoSingleDateEventModel.singleEventImportance"
+                                    [customTemplate]="tt" name="singleEventImportance"></rating>
                                 <!-- class="btn btn-{{i < v ? 'primary' : 'secondary'}}" -->
                                 <ng-template #tt let-i="index" let-v="value">
                                     <input type="button" value="{{i+1}}" class="btn"
@@ -98,8 +99,8 @@
                             <div class=" py-2">
                                 <textarea #eventDescription class="form-control" id="validationTextarea"
                                     placeholder="Description of event" required
-                                    [(ngModel)]="toDoSingleDateEventModel.eventDescription"
-                                    name="eventDescription"></textarea>
+                                    [(ngModel)]="toDoSingleDateEventModel.toDoSingleEventDescription"
+                                    name="toDoSingleEventDescription"></textarea>
                                 <div class="invalid-feedback">
                                     <!-- Describe the event -->
                                     <!-- <alert type="danger">
@@ -128,30 +129,33 @@
                     <div class="col">
                         <div class="card border-success mb-3 " style="width: 40rem; height:20rem">
                             <div class="card-header bg-transparent border-success">
-                                <strong>{{toDoSingleDateEventModel.eventDate}}</strong>
+                                <strong>{{toDoSingleDateEventModel.singleEventDate}}</strong>
                             </div>
                             <div class="card-body text-primary">
-                                <h5 class="card-title" *ngIf="toDoSingleDateEventModel.eventName != ''">
-                                    {{toDoSingleDateEventModel.eventName}}
+                                <h5 class="card-title" *ngIf="toDoSingleDateEventModel.toDoSingleEventName != ''">
+                                    {{toDoSingleDateEventModel.toDoSingleEventName}}
                                 </h5>
-                                <h5 class="card-title" *ngIf="toDoSingleDateEventModel.eventName == ''">Title</h5>
+                                <h5 class="card-title" *ngIf="toDoSingleDateEventModel.toDoSingleEventName == ''">Title
+                                </h5>
 
-                                <p class="card-text" *ngIf="toDoSingleDateEventModel.eventDescription != ''">
-                                    {{toDoSingleDateEventModel.eventDescription}}
+                                <p class="card-text" *ngIf="toDoSingleDateEventModel.toDoSingleEventDescription != ''">
+                                    {{toDoSingleDateEventModel.toDoSingleEventDescription}}
                                 </p>
-                                <p class="card-text" *ngIf="toDoSingleDateEventModel.eventDescription == ''">Description
+                                <p class="card-text" *ngIf="toDoSingleDateEventModel.toDoSingleEventDescription == ''">
+                                    Description
                                     of
                                     To Do
                                     Event!</p>
                             </div>
 
                             <div
-                                [ngClass]="{'bg-success':toDoSingleDateEventModel.eventImportance >= 1 && toDoSingleDateEventModel.eventImportance <=3,
-                                            'bg-warning':toDoSingleDateEventModel.eventImportance > 3 && toDoSingleDateEventModel.eventImportance <=6,
-                                            'bg-danger':toDoSingleDateEventModel.eventImportance > 6 && toDoSingleDateEventModel.eventImportance <=10}">
+                                [ngClass]="{'bg-success':toDoSingleDateEventModel.singleEventImportance >= 1 && toDoSingleDateEventModel.singleEventImportance <=3,
+                                            'bg-warning':toDoSingleDateEventModel.singleEventImportance > 3 && toDoSingleDateEventModel.singleEventImportance <=6,
+                                            'bg-danger':toDoSingleDateEventModel.singleEventImportance > 6 && toDoSingleDateEventModel.singleEventImportance <=10}">
                                 <p class="card-footer border-success"
-                                    *ngIf="toDoSingleDateEventModel.eventImportance != ''">
-                                    <strong>Importance level: 10/{{toDoSingleDateEventModel.eventImportance}}</strong>
+                                    *ngIf="toDoSingleDateEventModel.singleEventImportance != ''">
+                                    <strong>Importance level:
+                                        10/{{toDoSingleDateEventModel.singleEventImportance}}</strong>
                                 </p>
                             </div>
                         </div>
@@ -211,7 +215,8 @@
 
                             <div class="py-2">
                                 <input #eventName type="text" class="form-control" placeholder="Event Name"
-                                    name="eventName" [(ngModel)]="toDoRangedDateEventModel.eventName" required />
+                                    name="toDoRangedEventName"
+                                    [(ngModel)]="toDoRangedDateEventModel.toDoRangedEventName" required />
                                 <div class="invalid-feedback">
                                     <!-- Give a name for the event -->
                                     <!-- <alert type="danger">
@@ -223,8 +228,8 @@
                             <!-- class="btn btn-{{i < v ? 'primary' : 'secondary'}}" -->
                             <div>
                                 <p>Importance Level:</p>
-                                <rating [max]="10" [(ngModel)]="toDoRangedDateEventModel.eventImportance"
-                                    [customTemplate]="tt" name="eventImportance"></rating>
+                                <rating [max]="10" [(ngModel)]="toDoRangedDateEventModel.rangedEventImportance"
+                                    [customTemplate]="tt" name="rangedEventImportance"></rating>
 
                                 <ng-template #tt let-i="index" let-v="value">
                                     <input type="button" value="{{i+1}}"
@@ -237,10 +242,10 @@
 
 
                             <div class="py-2">
-                                <textarea #eventDescription class="form-control" id="validationTextarea"
+                                <textarea #toDoRangedEventDescription class="form-control" id="validationTextarea"
                                     placeholder="Description of event" required
-                                    [(ngModel)]="toDoRangedDateEventModel.eventDescription"
-                                    name="eventDescription"></textarea>
+                                    [(ngModel)]="toDoRangedDateEventModel.toDoRangedEventDescription"
+                                    name="toDoRangedEventDescription"></textarea>
                                 <div class="invalid-feedback">
                                     <!-- Describe the event -->
                                     <!-- <alert type="danger">
@@ -271,20 +276,22 @@
                     <div class="col">
                         <div class="card border-success mb-3" style="width: 35rem; height: 20rem;">
                             <div class="card-header bg-transparent border-success">
-                                <strong> {{toDoRangedDateEventModel.eventStartDate}} --
-                                    {{toDoRangedDateEventModel.eventEndDate}}</strong>
+                                <strong> {{toDoRangedDateEventModel.rangedEventStartDate}} --
+                                    {{toDoRangedDateEventModel.rangedEventEndDate}}</strong>
                             </div>
 
                             <div class="card-body text-primary">
-                                <h5 class="card-title" *ngIf="toDoRangedDateEventModel.eventName != ''">
-                                    {{toDoRangedDateEventModel.eventName}}
+                                <h5 class="card-title" *ngIf="toDoRangedDateEventModel.toDoRangedEventName != ''">
+                                    {{toDoRangedDateEventModel.toDoRangedEventName}}
                                 </h5>
-                                <h5 class="card-title" *ngIf="toDoRangedDateEventModel.eventName == ''">Title</h5>
+                                <h5 class="card-title" *ngIf="toDoRangedDateEventModel.toDoRangedEventName == ''">Title
+                                </h5>
 
-                                <p class="card-text" *ngIf="toDoRangedDateEventModel.eventDescription != ''">
-                                    {{toDoRangedDateEventModel.eventDescription}}
+                                <p class="card-text" *ngIf="toDoRangedDateEventModel.toDoRangedEventDescription != ''">
+                                    {{toDoRangedDateEventModel.toDoRangedEventDescription}}
                                 </p>
-                                <p class="card-text" *ngIf="toDoRangedDateEventModel.eventDescription == ''">Description
+                                <p class="card-text" *ngIf="toDoRangedDateEventModel.toDoRangedEventDescription == ''">
+                                    Description
                                     of
                                     To Do
                                     Event!</p>
@@ -292,12 +299,13 @@
 
                             <!-- DIRECTIVE MIGHT BE GOOD -->
                             <div
-                                [ngClass]="{'bg-success':toDoRangedDateEventModel.eventImportance >= 1 && toDoRangedDateEventModel.eventImportance <=3,
-                                        'bg-warning':toDoRangedDateEventModel.eventImportance > 3 && toDoRangedDateEventModel.eventImportance <=6,
-                                        'bg-danger':toDoRangedDateEventModel.eventImportance > 6 && toDoRangedDateEventModel.eventImportance <=10}">
+                                [ngClass]="{'bg-success':toDoRangedDateEventModel.rangedEventImportance >= 1 && toDoRangedDateEventModel.rangedEventImportance <=3,
+                                        'bg-warning':toDoRangedDateEventModel.rangedEventImportance > 3 && toDoRangedDateEventModel.rangedEventImportance <=6,
+                                        'bg-danger':toDoRangedDateEventModel.rangedEventImportance > 6 && toDoRangedDateEventModel.rangedEventImportance <=10}">
                                 <p class="card-footer border-success"
-                                    *ngIf="toDoRangedDateEventModel.eventImportance != ''">
-                                    <strong>Importance level: 10/{{toDoRangedDateEventModel.eventImportance}}</strong>
+                                    *ngIf="toDoRangedDateEventModel.rangedEventImportance != ''">
+                                    <strong>Importance level:
+                                        10/{{toDoRangedDateEventModel.rangedEventImportance}}</strong>
                                 </p>
                             </div>
                         </div>
