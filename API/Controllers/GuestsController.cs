@@ -50,18 +50,6 @@ namespace API.Controllers
             return todoRanged;
         }
 
-        [HttpGet("get-todosingleevents")]
-        public async Task<ActionResult<IEnumerable<ToDoSingleEventResponseDto>>> GetToDoSingleEvents()
-        {
-            return Ok(await _toDoSingleRepository.GetToDoSingleEventDtos());
-        }
-
-        [HttpGet("get-todorangedevents")]
-        public async Task<ActionResult<IEnumerable<ToDoSingleEventResponseDto>>> GetToDoRangedEvents()
-        {
-            return Ok(await _toDoRangedRepository.GetToDoRangedEventDtos());
-        }
-
         [HttpDelete("delete-todosingleevent")]
         public async Task<ActionResult<ToDoSingleEventResponseDto>> DeleteToDoSingleEvent(ToDoUniqueSingleEventRequestDto todorr)
         {
