@@ -44,27 +44,25 @@ export class ToDoComponent implements OnInit {
   singleDatePicker(cd: Date) {
     // let date = cd.toLocaleDateString();
 
-    let y = cd.getFullYear();
-    let m = cd.getUTCMonth() + 1;
-    let d = cd.getDate();
+    let y = cd.getFullYear().toString();
+    let m = (cd.getUTCMonth() + 1) < 10 ? "0" + (cd.getUTCMonth() + 1) : (cd.getUTCMonth() + 1).toString();
+    let d = cd.getDate() < 10 ? "0" + cd.getDate() : cd.getDate().toString();
 
     let date2 = y + "-" + m + "-" + d;
     this.toDoSingleDateEventModel.singleEventDate = date2;
-
-
 
   }
 
   rangeDatePicker(cd: any) {
     //let startDate: Date = event[0].toLocaleDateString();
     //let endDate: Date = event[1].toLocaleDateString();
-    let y1 = cd[0].getFullYear();
-    let m1 = cd[0].getUTCMonth() + 1;
-    let d1 = cd[0].getDate();
+    let y1 = cd[0].getFullYear().toString();
+    let m1 = parseInt(cd[0].getUTCMonth()) + 1 < 10 ? "0" + (parseInt(cd[0].getUTCMonth()) + 1) : (parseInt(cd[0].getUTCMonth()) + 1).toString();
+    let d1 = parseInt(cd[0].getDate()) < 10 ? "0" + cd[0].getDate() : cd[0].getDate().toString();
 
     let y2 = cd[1].getFullYear();
-    let m2 = cd[1].getUTCMonth() + 1;
-    let d2 = cd[1].getDate();
+    let m2 = parseInt(cd[1].getUTCMonth()) + 1 < 10 ? "0" + (cd[1].getUTCMonth() + 1) : (cd[1].getUTCMonth() + 1).toString();
+    let d2 = parseInt(cd[1].getDate()) < 10 ? "0" + cd[1].getDate() : cd[1].getDate().toString();
 
     let startDate2 = y1 + "-" + m1 + "-" + d1;
     let endDate2 = y2 + "-" + m2 + "-" + d2;
@@ -117,10 +115,6 @@ export class ToDoComponent implements OnInit {
           }
         )
       })
-
-
-
-
     } else {
       this.addEventWrongInput(this.toDoRangedEventAlerts);
     }
