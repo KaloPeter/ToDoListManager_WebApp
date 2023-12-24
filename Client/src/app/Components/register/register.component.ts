@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_Services/account.service';
 
@@ -7,7 +7,7 @@ import { AccountService } from 'src/app/_Services/account.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
 
   registerModel: any = {};
@@ -15,13 +15,36 @@ export class RegisterComponent {
   constructor(private accountService: AccountService, private router: Router) { }
 
 
+  @ViewChild('alert') alert: any;
+
+
+  ngOnInit(): void {
+    this.registerModel.firstName = "";
+    this.registerModel.lastName = "";
+    this.registerModel.email = "";
+    this.registerModel.username = "";
+    this.registerModel.password = "";
+
+  }
+
   register() {
-    this.accountService.register(this.registerModel).subscribe(
-      {
-        next: () => this.router.navigateByUrl("/"),
-        error: er => console.log("Error during Register: " + er)
-      }
-    )
+    let fn = this.registerModel.firstName == "" ? true : false
+    let ln = this.registerModel.lastName == "" ? true : false
+    let em = this.registerModel.email == "" ? true : false
+    let un = this.registerModel.username == "" ? true : false
+    let ps = this.registerModel.password == "" ? true : false
+
+    if (fn || ln || em || un || ps) {
+      this.alert.displayAlert('danger', 'Wrong input data-Register', 5000);
+    } else {
+      this.accountService.register(this.registerModel).subscribe(
+        {
+          next: () => this.router.navigateByUrl("/"),
+          error: err => this.alert.displayAlert('danger', err.error, 5000)
+        }
+      )
+    }
+
   }
 
 

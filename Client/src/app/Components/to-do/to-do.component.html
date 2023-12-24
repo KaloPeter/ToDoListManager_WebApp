@@ -192,13 +192,19 @@
                         <button type="submit" class="btn btn-success" form="simpleEventForm">Save Simple
                             Event</button>
                     </div>
-                    <div *ngFor="let alert of toDoSimpleEventAlerts">
+
+                    <!-- <div *ngFor="let alert of toDoSimpleEventAlerts">
                         <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="true"
                             (onClosed)="onClosedSimpleEventAlert(alert)">
                             <strong>{{
                                 alert.msg}}</strong>
                         </alert>
-                    </div>
+                    </div> -->
+
+                    <app-alert #singleAlert></app-alert>
+
+
+
                 </div>
             </div>
 
@@ -322,13 +328,15 @@
                             Event</button>
                     </div>
 
-                    <div *ngFor="let alert of toDoRangedEventAlerts">
+                    <!-- <div *ngFor="let alert of toDoRangedEventAlerts">
                         <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="true"
                             (onClosed)="onClosedRangedEventAlert(alert)">
                             <strong>{{
                                 alert.msg}}</strong>
                         </alert>
-                    </div>
+                    </div> -->
+
+                    <app-alert #rangedAlert></app-alert>
 
                 </div>
             </div>

@@ -19,6 +19,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { ToDoEventMapComponent } from './Components/to-do-event-map/to-do-event-map.component';
 import { JwtInterceptor } from './_Interceptors/jwt';
 import { ToDoEventCardComponent } from './Components/to-do-event-card/to-do-event-card.component';
+import { AlertComponent } from './Components/alert/alert.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ToDoEventCardComponent } from './Components/to-do-event-card/to-do-even
     NavComponent,
     ToDoComponent,
     ToDoEventMapComponent,
-    ToDoEventCardComponent
+    ToDoEventCardComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -20,9 +20,9 @@
     </div>
 
     <div class="form-floating">
-        <input type="email" class="form-control" id="UserName" placeholder=" UserName" name="UserName"
-            [(ngModel)]="registerModel.UserName">
-        <label for=" UserName">UserName</label>
+        <input type="email" class="form-control" id="username" placeholder="UserName" name="username"
+            [(ngModel)]="registerModel.username">
+        <label for="username">UserName</label>
     </div>
     <div class=" form-floating">
         <input type="password" class="form-control" id="password" placeholder="Password" name="password"
@@ -34,3 +34,4 @@
     <button class="btn btn-primary w-100 py-2" type="submit">Sign-up</button>
     <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
 </form>
+<app-alert #alert></app-alert>
