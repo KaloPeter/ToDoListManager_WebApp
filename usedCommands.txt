@@ -15,6 +15,9 @@ ng g c Components/ComponentName --skip-tests
 
 ng add ngx-bootstrap
 
+ng g guard _Guards/auth --skip-tests
+ng generate directive _Directives/has-role --skip-tests
+
 
 
 
