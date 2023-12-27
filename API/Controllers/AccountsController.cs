@@ -32,13 +32,18 @@ namespace API.Controllers
         {
             if (urrdto == null)
             {
-                return BadRequest("Input is empty");
+                return BadRequest("Inputs are Empty!");
             }
 
 
             if (await _context.Users.AnyAsync(u => u.Email == urrdto.Email))
             {
                 return BadRequest("Email already exists in database");//CHANGE
+            }
+
+            if (await _context.Users.AnyAsync(u => u.UserName == urrdto.UserName))
+            {
+                return BadRequest("UserName already exists in database");//CHANGE
             }
 
             GeneratePassword(urrdto.Password, out byte[] PasswordSalt, out byte[] PasswordHash);
@@ -69,12 +74,12 @@ namespace API.Controllers
 
             if (user == null)
             {
-                return BadRequest("Invalid Username");
+                return BadRequest("Invalid Username or Password");
             }
 
             if (!VerifyPassword(lrdto.Password, user.PasswordHash, user.PasswordSalt))
             {
-                return BadRequest("Invalid password");
+                return BadRequest("Invalid Username or Password");
             }
 
             var loggedUser = _mapper.Map<UserTokenResponseDto>(user);
