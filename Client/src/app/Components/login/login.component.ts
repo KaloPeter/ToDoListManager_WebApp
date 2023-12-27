@@ -26,14 +26,26 @@ export class LoginComponent implements OnInit {
   login() {
     //************************************************************************************ */
     if (this.loginModel.username == "" || this.loginModel.password == "") {
-      this.alert.displayAlert('danger', 'Wrong input data-LOGIN', 5000);
-    } else {
+      this.alert.displayAlert('danger', 'UserName and Password necessary!', 5000);
+
+    }
+    else if (this.loginModel.username !== "" && this.loginModel.password !== "") {
+      this.accountService.login(this.loginModel).subscribe({
+        next: () => this.router.navigateByUrl("home"),
+        error: error => {
+          this.alert.displayAlert('danger', error.error, 5000);
+        }
+      })
+    }
+    else {
+      //More than one error message comes from server->collection
       this.accountService.login(this.loginModel).subscribe({
         next: () => this.router.navigateByUrl("/"),
-        error: error => this.alert.displayAlert('danger', error.error, 5000)
+        error: error => {
+          this.alert.displayAlert('danger', error.error.errors['Password'][0], 5000);
+          this.alert.displayAlert('danger', error.error.errors['UserName'][0], 5000);
+        }
       })
-      //this.alert.displayInvalidFormAlert('success', 'Wrong input data-LOGIN', 5000);
-
     }
   }
 }

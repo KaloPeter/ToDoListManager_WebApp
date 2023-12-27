@@ -35,8 +35,9 @@ export class RegisterComponent implements OnInit {
     let ps = this.registerModel.password == "" ? true : false
 
     if (fn || ln || em || un || ps) {
-      this.alert.displayAlert('danger', 'Wrong input data-Register', 5000);
-    } else {
+      this.alert.displayAlert('danger', 'Every input is necessary!', 5000);
+    }
+    else {
       this.accountService.register(this.registerModel).subscribe(
         {
           next: () => this.router.navigateByUrl("/"),
@@ -44,6 +45,7 @@ export class RegisterComponent implements OnInit {
         }
       )
     }
+
 
   }
 
