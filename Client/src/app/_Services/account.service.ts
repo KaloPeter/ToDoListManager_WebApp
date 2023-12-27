@@ -40,7 +40,7 @@ export class AccountService {
           if (user) {
             this.currentUserSource.next(user);
             localStorage.setItem('user', JSON.stringify(user))
-            //  this.setRolesForLoggedUser(user);
+            this.setRolesForLoggedUser(user);
             this.setCurrentUser(user);
           }
           // return user;
@@ -49,7 +49,7 @@ export class AccountService {
   }
 
   setCurrentUser(user: UserToken) {
-    // this.setRolesForLoggedUser(user);
+    this.setRolesForLoggedUser(user);
     this.currentUserSource.next(user);
   }
 
