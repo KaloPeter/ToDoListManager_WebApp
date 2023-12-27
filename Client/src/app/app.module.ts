@@ -20,6 +20,7 @@ import { ToDoEventMapComponent } from './Components/to-do-event-map/to-do-event-
 import { JwtInterceptor } from './_Interceptors/jwt';
 import { ToDoEventCardComponent } from './Components/to-do-event-card/to-do-event-card.component';
 import { AlertComponent } from './Components/alert/alert.component';
+import { HasRoleDirective } from './_Directives/has-role.directive';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AlertComponent } from './Components/alert/alert.component';
     ToDoComponent,
     ToDoEventMapComponent,
     ToDoEventCardComponent,
-    AlertComponent
+    AlertComponent,
+    HasRoleDirective
   ],
   imports: [
     BrowserModule,
