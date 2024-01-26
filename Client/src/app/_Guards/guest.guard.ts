@@ -9,7 +9,7 @@ export const guestGuard: CanActivateFn = (route, state) => {
     map(user => {
       if (!user) return false
 
-      console.log(user);
+      // console.log(user);
 
 
       if (user.roleName == "Guest") {

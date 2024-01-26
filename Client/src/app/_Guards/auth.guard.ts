@@ -12,7 +12,7 @@ export const authGuard: CanActivateFn = (route, state) => {
         return true;
       } else {
         //injected client side error libraray mesage pop up HERE ex:toastr
-        console.log("cant access to this content!-Toastr for example")
+        console.log("cant access to this content-AUTH!-Toastr for example")
         return false;
       }
     })
