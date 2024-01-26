@@ -7,9 +7,11 @@ import { ToDoComponent } from './Components/to-do/to-do.component';
 import { ToDoEventMapComponent } from './Components/to-do-event-map/to-do-event-map.component';
 import { authGuard } from './_Guards/auth.guard';
 import { guestGuard } from './_Guards/guest.guard';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   {
     path: '',
     runGuardsAndResolvers: 'always',
@@ -21,7 +23,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '**', component: HomeComponent, pathMatch: 'full' },//"**" means not in the list
+  { path: '**', component: PageNotFoundComponent, pathMatch: 'full' },//"**" means not in the list
 ];
 
 @NgModule({

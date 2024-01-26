@@ -21,6 +21,7 @@ import { JwtInterceptor } from './_Interceptors/jwt';
 import { ToDoEventCardComponent } from './Components/to-do-event-card/to-do-event-card.component';
 import { AlertComponent } from './Components/alert/alert.component';
 import { HasRoleDirective } from './_Directives/has-role.directive';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HasRoleDirective } from './_Directives/has-role.directive';
     ToDoEventMapComponent,
     ToDoEventCardComponent,
     AlertComponent,
-    HasRoleDirective
+    HasRoleDirective,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
