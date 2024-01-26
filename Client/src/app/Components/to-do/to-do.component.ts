@@ -23,6 +23,8 @@ export class ToDoComponent implements OnInit {
   @ViewChild('singleAlert') singleAlert: any;
   @ViewChild('rangedAlert') rangedAlert: any;
 
+  selectedImage: File | null = null;
+
   constructor(private router: Router, private toDoService: ToDoEventService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -42,6 +44,7 @@ export class ToDoComponent implements OnInit {
     this.toDoRangedDateEventModel.rangedEventStartDate = "";
     this.toDoRangedDateEventModel.rangedEventEndDate = "";
 
+    this.selectedImage = null;
 
   }
   singleDatePicker(cd: Date) {
@@ -70,12 +73,26 @@ export class ToDoComponent implements OnInit {
     this.toDoRangedDateEventModel.rangedEventEndDate = endDate2;
   }
 
-
   processSimpleEventForm() {
     let evetnName = this.toDoSingleDateEventModel.toDoSingleEventName;
     let eventImportance = this.toDoSingleDateEventModel.singleEventImportance;
     let eventDescription = this.toDoSingleDateEventModel.toDoSingleEventDescription;
 
+    //this.toDoSingleDateEventModel.todoimage = this.selectedImage;
+
+    // console.log(this.toDoSingleDateEventModel);
+
+    // this.toDoService.upload2(this.toDoSingleDateEventModel).subscribe({
+    //   // next: () => this.router.navigateByUrl("/"),
+    //   // error: error => this.singleAlert.displayAlert('danger', error.error, 5000)
+    // })
+
+    //Display formdata
+    // formData.forEach(fd => {
+    //   console.log(fd);
+    // })
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
     if (evetnName && eventImportance && eventDescription) {
       this.toDoService.addToDoSingleEvent(this.toDoSingleDateEventModel).subscribe({
         next: () => this.router.navigateByUrl("/"),
@@ -85,6 +102,33 @@ export class ToDoComponent implements OnInit {
       this.singleAlert.displayAlert('danger', "The form is invalid, because one or more inputs are not correct!-SIMPLE", 5000)
     }
   }
+
+  /****************************************************************************** todoImage*/
+
+  // onFileSelected(event: any) {
+  //   //console.log(event);
+  //   //this.selectedImage = event;
+  //   //this.toDoSingleDateEventModel.ToDoImage = event.target.files[0];
+
+  //   // let reader = new FileReader();
+  //   // reader.readAsDataURL(this.selectedImage.target.files[0]);
+  //   // reader.onload = () => { this.selectedImage.target.files[0] = reader.result; }
+
+  //   this.selectedImage = event.target.files[0] as File;
+
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
 
   processRangedEventForm() {
     let eventName = this.toDoRangedDateEventModel.toDoRangedEventName;

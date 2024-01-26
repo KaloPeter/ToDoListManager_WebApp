@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="eventForm">
                         <form #eventForm="ngForm" id="simpleEventForm" class="was-validated"
-                            (ngSubmit)="processSimpleEventForm()" autocomplete="off">
+                            enctype="multipart/form-data" (ngSubmit)="processSimpleEventForm()" autocomplete="off">
 
                             <div class="py-2">
                                 <input #eventName type="text" class="form-control" placeholder="Event Name"
@@ -113,6 +113,22 @@
                                     </alert>
                                 </div> -->
                             </div>
+
+
+                            <!-- <div class=" py-2">
+                                <div class="mb-3">
+                                    <input type="file" class="form-control" aria-label="todoImage" id="todoImage"
+                                        name="todoImage" (change)="onFileSelected($event)" required>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class=" py-2">
+                                <div class="mb-3">
+                                    <img src="{{selectedImage}}">
+                                </div>
+                            </div> -->
+
+
 
                         </form>
                     </div>

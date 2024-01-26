@@ -21,7 +21,7 @@ namespace API.Entities
         public string UserId { get; set; }
         public User User { get; set; }
 
-
+        //   public string ToDoSingleEventImageUrl { get; set; }
 
     }
 }

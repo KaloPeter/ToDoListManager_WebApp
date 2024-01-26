@@ -7,7 +7,9 @@ using API.Interfaces.IRepositories;
 using API.Interfaces.ITokenService;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,23 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+
+
+builder.Services.Configure<FormOptions>(o =>
+{
+    o.ValueLengthLimit = int.MaxValue;
+    o.MultipartBodyLengthLimit = int.MaxValue;
+    o.MemoryBufferThreshold = int.MaxValue;
+});
+
+
+
+
+
+
+
 
 builder.Services.AddControllers()
            .AddJsonOptions(options =>
@@ -68,6 +87,13 @@ var app = builder.Build();
 //app.UseHttpsRedirection();
 
 app.UseCors(pol => pol.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+// app.UseStaticFiles();
+// app.UseStaticFiles(new StaticFileOptions()
+// {
+//     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+//     RequestPath = new PathString("/Resources")
+// });
+
 
 
 app.UseAuthentication();

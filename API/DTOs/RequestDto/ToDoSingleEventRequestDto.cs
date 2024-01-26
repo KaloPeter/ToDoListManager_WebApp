@@ -12,5 +12,6 @@ namespace API.DTOs.RequestDto
         public int SingleEventImportance { get; set; }
         [Required]
         public DateOnly SingleEventDate { get; set; }
+        //     public IFormFile ToDoImage { get; set; }
     }
 }

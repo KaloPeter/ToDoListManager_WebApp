@@ -5,6 +5,7 @@ export interface ToDoSingleEvent {
     toDoSingleEventDescription: string,
     singleEventImportance: number,
     singleEventDate: Date,
-    user: User
+    user: User//,
+    //   toDoSingleEventImageUrl: string
 
 }

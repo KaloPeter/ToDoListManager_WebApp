@@ -9,5 +9,7 @@ namespace API.DTOs.ResponseDto
         public DateOnly SingleEventDate { get; set; }
         public UserResponseDto User { get; set; }
 
+        //      public string ToDoSingleEventImageUrl { get; set; }
+
     }
 }

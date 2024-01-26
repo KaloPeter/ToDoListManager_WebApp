@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using API.DTOs.RequestDto;
 using API.DTOs.ResponseDto;
 using API.Entities;
@@ -21,10 +22,34 @@ namespace API.Data.Repositories
 
         }
 
-        public async Task<ToDoSingleEventResponseDto> CreateToDoSingleEvent(ToDoSingleEventRequestDto todoser, User user)
+        public async Task<ToDoSingleEventResponseDto> CreateToDoSingleEvent(ToDoSingleEventRequestDto todose, User user)
         {
-            var toDoSingleEvent = _mapper.Map<ToDoSingleEvent>(todoser);
+            var toDoSingleEvent = _mapper.Map<ToDoSingleEvent>(todose);
+
             toDoSingleEvent.User = user;
+
+            // var folderName = Path.Combine("Resources", "Images");
+            // var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+            // if (todose.ToDoImage.Length > 0)
+            // {
+            //     var fileName = ContentDispositionHeaderValue.Parse(todose.ToDoImage.ContentDisposition).FileName.Trim('"');
+            //     var fullPath = Path.Combine(pathToSave, fileName);
+            //     toDoSingleEvent.ToDoSingleEventImageUrl = fullPath;
+            //     var dbPath = Path.Combine(folderName, fileName);
+            //     using (var stream = new FileStream(fullPath, FileMode.Create))
+            //     {
+            //         todose.ToDoImage.CopyTo(stream);
+            //     }
+
+            // }
+            // else
+            // {
+            //     return null;
+            // }
+
+
+
 
             _context.ToDoSingleEvents.Add(toDoSingleEvent);
 
