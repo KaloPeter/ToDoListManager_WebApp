@@ -22,7 +22,7 @@ export class AlertComponent {
       msg: message,
       timeout: timeout
     }
-    if (this.alerts.length < 3) {
+    if (this.alerts.length < 3) {//This is where we restrict that the alert can appear maximum 3 times, then it starts overwite the precois ones
       this.alerts.push(alert)
     } else {
       this.alerts.unshift(alert);
