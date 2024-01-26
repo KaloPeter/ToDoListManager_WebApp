@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     else {
       this.accountService.register(this.registerModel).subscribe(
         {
-          next: () => this.router.navigateByUrl("/"),
+          next: () => this.router.navigateByUrl("/home"),
           error: err => this.alert.displayAlert('danger', err.error, 5000)
         }
       )
