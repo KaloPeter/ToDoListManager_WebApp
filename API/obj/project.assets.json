@@ -2628,11 +2628,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\ASP.NET_Projects\\01_ToDoListManager\\API\\API.csproj",
+      "projectUniqueName": "D:\\ASP.NET_Projects\\01_ToDoListManager\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "d:\\ASP.NET_Projects\\01_ToDoListManager\\API\\API.csproj",
+      "projectPath": "D:\\ASP.NET_Projects\\01_ToDoListManager\\API\\API.csproj",
       "packagesPath": "C:\\Users\\otthon\\.nuget\\packages\\",
-      "outputPath": "d:\\ASP.NET_Projects\\01_ToDoListManager\\API\\obj\\",
+      "outputPath": "D:\\ASP.NET_Projects\\01_ToDoListManager\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

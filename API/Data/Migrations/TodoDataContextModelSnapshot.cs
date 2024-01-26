@@ -27,7 +27,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("RoleId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("API.Entities.ToDoRangedEvent", b =>
@@ -57,7 +57,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ToDoRangedEvents");
+                    b.ToTable("ToDoRangedEvents", (string)null);
                 });
 
             modelBuilder.Entity("API.Entities.ToDoSingleEvent", b =>
@@ -84,7 +84,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ToDoSingleEvents");
+                    b.ToTable("ToDoSingleEvents", (string)null);
                 });
 
             modelBuilder.Entity("API.Entities.User", b =>
@@ -117,7 +117,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("API.Entities.ToDoRangedEvent", b =>
